@@ -84,7 +84,7 @@ ul li a:hover::before{
 }
 
 .Himg{
-    width: 97%;
+    width: 100%;
     height: auto;
     display: block;
     margin-left: auto;
