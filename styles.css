@@ -60,10 +60,18 @@ ul li a:hover::before{
     gap: 20px;
 }
   
-.icon {
+.fav {
     font-size: 25px;
     color: black;
     cursor: pointer;
+    text-decoration: none;
+}
+
+.cart {
+    font-size: 25px;
+    color: black;
+    cursor: pointer;
+    text-decoration: none;
 }
 
 .footer{
@@ -124,6 +132,26 @@ ul li a:hover::before{
     max-width: 100%;
 }
 
+.Mcontainer1{
+    display: flex;
+    width: 80%;
+    background-color: #fff;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0 auto;
+    padding: 2%;
+    gap: 3%;
+}
 
+.Mcontainer2{
+    display: flex;
+    width: 80%;
+    background-color: #fff;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0 auto;
+    padding: 1%;
+    gap: 3%;
+}
 
 
