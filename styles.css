@@ -142,6 +142,7 @@ ul li a:hover::before{
     object-fit: cover;
 }
 
+
 .Mcontainer1{
     display: flex;
     width: 80%;
@@ -205,24 +206,25 @@ ul li a:hover::before{
     display: block;
 }
 
+.men{
+    display: flex;
+    justify-content: center;
+    gap: 9%;
+}
+
+.info{
+    font-size: 30px;
+    margin-top: 8%;        
+    line-height: 2;
+}
+
 .men-img img{
-    width: 28%;
-    height: 20%;
-    overflow: hidden;
-    padding-left: 18%;
-    margin-top: 5%;
-    margin-bottom: 10%;
+    height: 600px;
+    margin-top: 20%;
+    margin-bottom: 20%;
 }
 
-.{
-    display: flex;
-    font-size: 25px;
-    flex-basis: 40%;
-    margin-left: 50%;
-    margin-top: 5%;
+a{
+    text-decoration: none;
+    color: black;
 }
-
-.men {
-    display: flex;
-}
-
