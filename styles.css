@@ -205,3 +205,24 @@ ul li a:hover::before{
     display: block;
 }
 
+.men-img img{
+    width: 28%;
+    height: 20%;
+    overflow: hidden;
+    padding-left: 18%;
+    margin-top: 5%;
+    margin-bottom: 10%;
+}
+
+.{
+    display: flex;
+    font-size: 25px;
+    flex-basis: 40%;
+    margin-left: 50%;
+    margin-top: 5%;
+}
+
+.men {
+    display: flex;
+}
+
