@@ -1,7 +1,7 @@
 // Variables to store the selected size, cart, and favorite items
 let selectedSize = null;
 const cartItems = [];
-const favouriteItems = [];
+
 
 // Handle size selection
 const sizeButtons = document.querySelectorAll('.size-btn');
@@ -14,17 +14,6 @@ sizeButtons.forEach((btn) => {
     });
 });
 
-// Handle "Add to Favourite" functionality
-document.getElementById('addToFavourite').addEventListener('click', () => {
-    const product = {
-        name: 'FC Barcelona Christmas Collection',
-        description: 'Christmas Jumper',
-        price: 99.99
-    };
-    favouriteItems.push(product);
-    alert('Item added to favourites!');
-    localStorage.setItem('favourites', JSON.stringify(favouriteItems));
-});
 
 // script.js
 document.addEventListener('DOMContentLoaded', function() {
@@ -57,7 +46,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
 document.addEventListener('DOMContentLoaded', function() {
     const addToCartButton = document.getElementById('addToCart');
-    const addToFavouriteButton = document.getElementById('addToFavourite');
     const sizeButtons = document.querySelectorAll('.size-btn');
     let selectedSize = null;
 
@@ -87,24 +75,6 @@ document.addEventListener('DOMContentLoaded', function() {
             cartItems.push(newItem);
             localStorage.setItem('cart', JSON.stringify(cartItems));
             alert('Item added to cart!');
-        } else {
-            alert('Please select a size.');
-        }
-    });
-
-    addToFavouriteButton.addEventListener('click', function() {
-        if (selectedSize) {
-            const favouriteItems = JSON.parse(localStorage.getItem('favourites')) || [];
-            const newItem = {
-                name: productName,
-                description: productDescription,
-                size: selectedSize,
-                price: productPrice,
-                image: productImage
-            };
-            favouriteItems.push(newItem);
-            localStorage.setItem('favourites', JSON.stringify(favouriteItems));
-            alert('Item added to favourites!');
         } else {
             alert('Please select a size.');
         }

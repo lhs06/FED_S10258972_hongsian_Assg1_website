@@ -3,16 +3,29 @@
     padding: 0;
 
 }
+
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 30px 30px;
+    padding: 10px 30px;
     background-color: #e2e3de;
-  }
+    position: relative;
+}
 
-.logo .logo-text {
-    font-size: 32px;
+.logo-img {
+    width: 80px; 
+    height: auto;
+}
+
+.text-logo {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.logo-text {
+    font-size: 50px;
     font-weight: bold;
     color: #121212;
     letter-spacing: 1px;
@@ -94,10 +107,12 @@ ul li a:hover::before{
 
 .Himg{
     width: 100%;
+    max-width:  100%;
     height: auto;
     display: block;
     margin-left: auto;
     margin-right: auto;
+    object-fit: cover;
 }
 
 .new{
