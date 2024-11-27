@@ -215,7 +215,7 @@ ul li a:hover::before{
 .info{
     font-size: 30px;
     margin-top: 8%;        
-    line-height: 2;
+    line-height: 1.9;
 }
 
 .men-img img{
@@ -227,4 +227,121 @@ ul li a:hover::before{
 a{
     text-decoration: none;
     color: black;
+}
+
+.size-selection {
+    margin-bottom: 20px;
+}
+
+.size-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.size-btn {
+    padding: 10px 15px;
+    font-size: 18px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.size-btn:hover {
+    background-color: #ddd;
+}
+
+.size-btn.selected {
+    background-color: #000;
+    color: #fff;
+}
+
+.action-buttons {
+    display: flex;
+    flex-direction: column;
+    margin-right: 43%;
+}
+
+.action-btn {
+    width: 150%; 
+    max-width: 400px;
+    height: 10%; 
+    padding: 10px 20px; 
+    padding-left: 10px;
+    margin: 10px auto; 
+    display: block; 
+    text-align: center; 
+    border: none; 
+    background-color: #333; 
+    color: white;
+    cursor: pointer; 
+    transition: background-color 0.3s;
+    font-size: 20px;
+}
+
+.action-btn:hover {
+    background-color: #555;
+}
+
+.cart-items {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+.cart-item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    border: 1px solid #ccc;
+    padding: 20px;
+    width: 80%;
+    max-width: 800px;
+    background-color: #f9f9f9;
+}
+
+.cart-item-image {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
+
+.cart-item-details {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.favourite-items {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+.favourite-item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    border: 1px solid #ccc;
+    padding: 20px;
+    width: 80%;
+    max-width: 800px;
+    background-color: #f9f9f9;
+}
+
+.favourite-item-image {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
+
+.favourite-item-details {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }

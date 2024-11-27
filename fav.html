@@ -25,5 +25,35 @@
               <a href="/cart.html" class="cart">&#128722;</a>
             </div>
         </nav>
-    </body>
+
+        <h1>Your Favourites</h1>
+        <br>
+        <div id="favouriteItems" class="favourite-items"></div>
+
+        <script>
+            const favouriteItems = JSON.parse(localStorage.getItem('favourites')) || [];
+            const favouriteDiv = document.getElementById('favouriteItems');
+
+            if (favouriteItems.length === 0) {
+                favouriteDiv.innerHTML = '<p>Your favourites list is empty.</p>';
+            } else {
+                favouriteItems.forEach(item => {
+                    const itemDiv = document.createElement('div');
+                    itemDiv.classList.add('favourite-item');
+                    itemDiv.innerHTML = `
+                        <img src="${item.image}" alt="${item.name}" class="favourite-item-image">
+                        <div class="favourite-item-details">
+                            <h3>${item.name}</h3>
+                            <p>${item.description}</p>
+                            <p>Size: ${item.size}</p>
+                            <p>Price: $${item.price.toFixed(2)}</p>
+                        </div>
+                    `;
+                    favouriteDiv.appendChild(itemDiv);
+                });
+            }
+        </script>
+
+        <script src="script.js"></script>
 </body>
+</html>

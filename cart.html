@@ -4,26 +4,61 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="styles.css">
-    <title>FTB</title>
+    <title>Your Cart</title>
 </head>
 <body>
-    <body>
-        <nav class="navbar">
-            <div class="logo">
-                <a href="/index.html" class="logo-text no-underline">FTB</a>
-            </div>
-            <ul class="nav-links">
-                <li><a href="/index.html">Home</a></li>
-                <li><a href="/Men.html">Men</a></li>
-                <li><a href="/Women.html">Women</a></li>
-                <li><a href="/Kid.html">Kids</a></li>
-                <li><a href="/Sport.html">Sport</a></li>
-                <li><a href="/Others.html">Others</a></li>
-            </ul>
-            <div class="icons">
-              <a href="/fav.html" class="fav">&#9825;</a>
-              <a href="/cart.html" class="cart">&#128722;</a>
-            </div>
-        </nav>
-    </body>
+    <nav class="navbar">
+        <div class="logo">
+            <a href="/index.html" class="logo-text no-underline">FTB</a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="/index.html">Home</a></li>
+            <li class="dropdown">
+                <a href="javascript:void(0)" class="dropbtn" id="categoriesBtn">Categories</a>
+                <div class="dropdown-content" id="dropdownContent">
+                    <a href="/Men.html">Men</a>
+                    <a href="/Women.html">Women</a>
+                    <a href="/Kid.html">Kids</a>
+                </div>
+            </li>
+            <li><a href="/Sport.html">Sport</a></li>
+            <li><a href="/Others.html">Others</a></li>
+        </ul>
+        <div class="icons">
+            <a href="/fav.html" class="fav">&#9825;</a>
+            <a href="/cart.html" class="cart">&#128722;</a>
+        </div>
+    </nav>
+
+    <h1>Your Cart</h1>
+    <br>
+    <div id="cartItems" class="cart-items"></div>
+
+    <script>
+        const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+        const cartDiv = document.getElementById('cartItems');
+
+        if (cartItems.length === 0) {
+            cartDiv.innerHTML = '<p>Your cart is empty.</p>';
+        } else {
+            cartItems.forEach(item => {
+                const itemDiv = document.createElement('div');
+                itemDiv.classList.add('cart-item');
+                itemDiv.innerHTML = `
+                    <img src="${item.image}" alt="${item.name}" class="cart-item-image">
+                    <div class="cart-item-details">
+                        <h3>${item.name}</h3>
+                        <p>${item.description}</p>
+                        <p>Size: ${item.size}</p>
+                        <p>Price: $${item.price.toFixed(2)}</p>
+                    </div>
+                `;
+                cartDiv.appendChild(itemDiv);
+            });
+        }
+    </script>
+
+    <script src="script.js"></script>
+    <script src="cf.js"></script>
 </body>
+</html>
