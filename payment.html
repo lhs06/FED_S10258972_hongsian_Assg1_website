@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="styles.css">
-    <title>Your Cart</title>
+    <title>Payment</title>
 </head>
 <body>
     <nav class="navbar">
@@ -30,59 +30,53 @@
         </div>
     </nav>
 
-    <h1>Your Cart</h1>
+    <h1>Payment</h1>
     <br>
-    <div id="cartItems" class="cart-items"></div>
-    <button id="checkoutButton" class="checkout-btn">Proceed to Checkout</button>
+    <div id="paymentItems" class="payment-items"></div>
+    <button id="payButton" class="pay-btn">Pay Now</button>
 
     <script>
-        const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
-        const cartDiv = document.getElementById('cartItems');
+        const paymentItems = JSON.parse(localStorage.getItem('cart')) || [];
+        const paymentDiv = document.getElementById('paymentItems');
 
-        function renderCartItems() {
-            cartDiv.innerHTML = '';
-            if (cartItems.length === 0) {
-                cartDiv.innerHTML = '<p>Your cart is empty.</p>';
+        function renderPaymentItems() {
+            paymentDiv.innerHTML = '';
+            if (paymentItems.length === 0) {
+                paymentDiv.innerHTML = '<p>Your cart is empty.</p>';
             } else {
-                cartItems.forEach((item, index) => {
+                paymentItems.forEach(item => {
                     const itemDiv = document.createElement('div');
-                    itemDiv.classList.add('cart-item');
+                    itemDiv.classList.add('payment-item');
                     itemDiv.innerHTML = `
-                        <img src="${item.image}" alt="${item.name}" class="cart-item-image">
-                        <div class="cart-item-details">
+                        <img src="${item.image}" alt="${item.name}" class="payment-item-image">
+                        <div class="payment-item-details">
                             <h3>${item.name}</h3>
                             <p>${item.description}</p>
                             <p>Size: ${item.size}</p>
                             <p>Price: $${item.price.toFixed(2)}</p>
-                            <button class="remove-btn" data-index="${index}">Remove</button>
                         </div>
                     `;
-                    cartDiv.appendChild(itemDiv);
+                    paymentDiv.appendChild(itemDiv);
                 });
             }
         }
 
-        renderCartItems();
+        renderPaymentItems();
 
-        cartDiv.addEventListener('click', function(event) {
-            if (event.target.classList.contains('remove-btn')) {
-                const index = event.target.dataset.index;
-                cartItems.splice(index, 1);
-                localStorage.setItem('cart', JSON.stringify(cartItems));
-                renderCartItems();
-            }
-        });
-
-        const checkoutButton = document.getElementById('checkoutButton');
-        checkoutButton.addEventListener('click', function() {
-            if (cartItems.length > 0) {
-                window.location.href = '/payment.html';
+        const payButton = document.getElementById('payButton');
+        payButton.addEventListener('click', function() {
+            if (paymentItems.length > 0) {
+                alert('Proceeding to payment...');
+                // Add your payment processing logic here
             } else {
                 alert('Your cart is empty.');
             }
         });
     </script>
 
-    <script src="script.js"></script>
+    <footer class="footer">
+        <p>© 2024 FTB Singapore Pte Ltd.</p>
+        <p>All rights reserved</p>
+    </footer>
 </body>
 </html>
