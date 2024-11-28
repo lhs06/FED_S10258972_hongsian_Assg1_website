@@ -56,43 +56,60 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 //card slider//
-const sliderContainer = document.querySelector('.slider-container');
-        const prevButton = document.querySelector('.prev');
-        const nextButton = document.querySelector('.next');
-        const dots = document.querySelectorAll('.dot');
-        let currentIndex = 0;
-        const itemWidth = 33.333; // percentage width of each item
+document.addEventListener('DOMContentLoaded', function() {
+    // Existing Slideshow Logic
+    
+    // Card Slider Logic
+    const sliderContainerCard = document.querySelector('.slider-container');
+    const prevButtonCard = document.querySelector('.prev');
+    const nextButtonCard = document.querySelector('.next');
+    const dots = document.querySelectorAll('.dot'); // Select dots
+    const totalItems = document.querySelectorAll('.flex-item').length;
+    const visibleItems = 3; // Number of items visible at once
+    const totalSlides = Math.ceil(totalItems / visibleItems);
+    let currentIndexCard = 0;
 
-        function updateSlider() {
-            sliderContainer.style.transform = `translateX(-${currentIndex * itemWidth}%)`;
-            
-            // Update dots
-            dots.forEach((dot, index) => {
-                dot.classList.toggle('active', index === currentIndex);
-            });
-        }
-
-        function nextSlide() {
-            currentIndex = currentIndex >= 1 ? 0 : currentIndex + 1;
-            updateSlider();
-        }
-
-        function prevSlide() {
-            currentIndex = currentIndex === 0 ? 1 : currentIndex - 1;
-            updateSlider();
-        }
-
-        // Event listeners
-        nextButton.addEventListener('click', nextSlide);
-        prevButton.addEventListener('click', prevSlide);
-
+    function updateSliderCard() {
+        const translateX = -(currentIndexCard * (100));
+        sliderContainerCard.style.transform = `translateX(${translateX}%)`;
+        
+        // Update dots
         dots.forEach((dot, index) => {
-            dot.addEventListener('click', () => {
-                currentIndex = index;
-                updateSlider();
-            });
+            dot.classList.toggle('active', index === currentIndexCard);
         });
+    }
 
-        // Optional: Auto-slide
-        setInterval(nextSlide, 5000);
+    function nextSlideCard() {
+        if (currentIndexCard < totalSlides - 1) {
+            currentIndexCard++;
+        } else {
+            currentIndexCard = 0; // Loop back to the start
+        }
+        updateSliderCard();
+    }
+
+    function prevSlideCard() {
+        if (currentIndexCard > 0) {
+            currentIndexCard--;
+        } else {
+            currentIndexCard = totalSlides - 1; // Loop to the end
+        }
+        updateSliderCard();
+    }
+
+    // Function to handle dot clicks
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            currentIndexCard = index;
+            updateSliderCard();
+        });
+    });
+
+    // Event listeners for card slider
+    nextButtonCard.addEventListener('click', nextSlideCard);
+    prevButtonCard.addEventListener('click', prevSlideCard);
+
+    // Initial position
+    updateSliderCard();
+});
 
