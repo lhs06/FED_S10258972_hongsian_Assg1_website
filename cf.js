@@ -15,7 +15,7 @@ sizeButtons.forEach((btn) => {
 });
 
 
-// script.js
+// cart
 document.addEventListener('DOMContentLoaded', function() {
     const addToCartButton = document.getElementById('addToCart');
     const sizeSelect = document.querySelector('.size-btn.selected');
