@@ -454,6 +454,7 @@ a{
     cursor: pointer;
     transition: background-color 0.3s;
     border-radius: 8px;
+    width: 19%;
 }
 
 .size-btn:hover {
