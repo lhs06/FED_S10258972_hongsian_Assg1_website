@@ -123,40 +123,183 @@ document.addEventListener('DOMContentLoaded', function() {
 //payment//
 document.addEventListener('DOMContentLoaded', function() {
     const paymentItems = JSON.parse(localStorage.getItem('cart')) || [];
-    const paymentDiv = document.getElementById('paymentItems');
     const totalAmountSpan = document.getElementById('totalAmount');
 
-    function renderPaymentItems() {
-        paymentDiv.innerHTML = '';
+    function calculateTotalAmount() {
         let totalAmount = 0;
-        if (paymentItems.length === 0) {
-            paymentDiv.innerHTML = '<p>Your cart is empty.</p>';
-        } else {
-            paymentItems.forEach(item => {
-                const itemDiv = document.createElement('div');
-                itemDiv.classList.add('payment-item');
-                itemDiv.innerHTML = `
-                    <img src="${item.image}" alt="${item.name}" class="payment-item-image">
-                    <div class="payment-item-details">
-                        <h3>${item.name}</h3>
-                        <p>${item.description}</p>
-                        <p>Size: ${item.size}</p>
-                        <p>Price: $${item.price.toFixed(2)}</p>
-                    </div>
-                `;
-                paymentDiv.appendChild(itemDiv);
-                totalAmount += item.price;
-            });
-        }
+        paymentItems.forEach(item => {
+            totalAmount += item.price;
+        });
         totalAmountSpan.textContent = totalAmount.toFixed(2);
     }
 
-    renderPaymentItems();
+    calculateTotalAmount();
 
     const paymentForm = document.getElementById('paymentForm');
     paymentForm.addEventListener('submit', function(event) {
         event.preventDefault();
         alert('Payment successful!');
-        // Add your payment processing logic here
+        // Clear the cart items from local storage
+        localStorage.removeItem('cart');
+    });
+});
+
+
+//bin//
+document.addEventListener('DOMContentLoaded', function() {
+    const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+    const cartDiv = document.getElementById('cartItems');
+    const subtotalSpan = document.getElementById('subtotal');
+    const deliveryFeeSpan = document.getElementById('deliveryFee');
+    const totalSpan = document.getElementById('total');
+    const deliveryFee = 5.00;
+
+    function renderCartItems() {
+        cartDiv.innerHTML = '';
+        let subtotal = 0;
+        if (cartItems.length === 0) {
+            cartDiv.innerHTML = '<p>Your cart is empty.</p>';
+        } else {
+            cartItems.forEach((item, index) => {
+                const itemDiv = document.createElement('div');
+                itemDiv.classList.add('cart-item');
+                itemDiv.innerHTML = `
+                    <img src="${item.image}" alt="${item.name}" class="cart-item-image">
+                    <div class="cart-item-details">
+                        <h3>${item.name}</h3>
+                        <p>${item.description}</p>
+                        <p>Size: ${item.size}</p>
+                        <p>Price: $${item.price.toFixed(2)}</p>
+                    </div>
+                    <button class="remove-btn" data-index="${index}">&#128465;</button>
+                `;
+                cartDiv.appendChild(itemDiv);
+                subtotal += item.price;
+            });
+        }
+        subtotalSpan.textContent = subtotal.toFixed(2);
+        const total = subtotal + deliveryFee;
+        totalSpan.textContent = total.toFixed(2);
+    }
+
+    renderCartItems();
+
+    cartDiv.addEventListener('click', function(event) {
+        if (event.target.classList.contains('remove-btn')) {
+            const index = event.target.dataset.index;
+            cartItems.splice(index, 1);
+            localStorage.setItem('cart', JSON.stringify(cartItems));
+            renderCartItems();
+        }
+    });
+
+    const checkoutButton = document.getElementById('checkoutButton');
+    checkoutButton.addEventListener('click', function() {
+        if (cartItems.length > 0) {
+            window.location.href = '/payment.html';
+        } else {
+            alert('Your cart is empty.');
+        }
+    });
+});
+
+//cart//
+document.addEventListener('DOMContentLoaded', function() {
+    // Variables to store the selected size, cart, and favorite items
+    let selectedSize = null;
+    const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+
+    // Handle size selection
+    const sizeButtons = document.querySelectorAll('.size-btn');
+    sizeButtons.forEach((btn) => {
+        btn.addEventListener('click', () => {
+            selectedSize = btn.getAttribute('data-size');
+            // Highlight selected size
+            sizeButtons.forEach(b => b.classList.remove('selected'));
+            btn.classList.add('selected');
+        });
+    });
+
+    // Handle adding to cart
+    const addToCartButtons = document.querySelectorAll('.addToCart');
+    addToCartButtons.forEach((button) => {
+        button.addEventListener('click', function() {
+            const productElement = button.closest('.Mproduct');
+            const productName = productElement.getAttribute('data-name');
+            const productDescription = productElement.getAttribute('data-description');
+            const productPrice = parseFloat(productElement.getAttribute('data-price'));
+            const productImage = productElement.getAttribute('data-image');
+
+            if (selectedSize) {
+                const newItem = {
+                    name: productName,
+                    description: productDescription,
+                    size: selectedSize,
+                    price: productPrice,
+                    image: productImage
+                };
+                cartItems.push(newItem);
+                localStorage.setItem('cart', JSON.stringify(cartItems));
+                alert('Item added to cart!');
+                renderCartItems(); // Update the cart items after adding a new item
+            } else {
+                alert('Please select a size.');
+            }
+        });
+    });
+
+    // Render cart items and update summary
+    const cartDiv = document.getElementById('cartItems');
+    const subtotalSpan = document.getElementById('subtotal');
+    const deliveryFeeSpan = document.getElementById('deliveryFee');
+    const totalSpan = document.getElementById('total');
+    const deliveryFee = 5.00;
+
+    function renderCartItems() {
+        cartDiv.innerHTML = '';
+        let subtotal = 0;
+        if (cartItems.length === 0) {
+            cartDiv.innerHTML = '<p>Your cart is empty.</p>';
+        } else {
+            cartItems.forEach((item, index) => {
+                const itemDiv = document.createElement('div');
+                itemDiv.classList.add('cart-item');
+                itemDiv.innerHTML = `
+                    <img src="${item.image}" alt="${item.name}" class="cart-item-image">
+                    <div class="cart-item-details">
+                        <h3>${item.name}</h3>
+                        <p>${item.description}</p>
+                        <p>Size: ${item.size}</p>
+                        <p>Price: $${item.price.toFixed(2)}</p>
+                    </div>
+                    <button class="remove-btn" data-index="${index}">&#128465;</button>
+                `;
+                cartDiv.appendChild(itemDiv);
+                subtotal += item.price;
+            });
+        }
+        subtotalSpan.textContent = subtotal.toFixed(2);
+        const total = subtotal + deliveryFee;
+        totalSpan.textContent = total.toFixed(2);
+    }
+
+    renderCartItems();
+
+    cartDiv.addEventListener('click', function(event) {
+        if (event.target.classList.contains('remove-btn')) {
+            const index = event.target.dataset.index;
+            cartItems.splice(index, 1);
+            localStorage.setItem('cart', JSON.stringify(cartItems));
+            renderCartItems();
+        }
+    });
+
+    const checkoutButton = document.getElementById('checkoutButton');
+    checkoutButton.addEventListener('click', function() {
+        if (cartItems.length > 0) {
+            window.location.href = '/payment.html';
+        } else {
+            alert('Your cart is empty.');
+        }
     });
 });

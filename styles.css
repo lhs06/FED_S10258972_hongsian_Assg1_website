@@ -404,16 +404,25 @@ ul li a:hover::before{
     display: block;
 }
 
-.men{
+.Mproduct{
     display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.men-img{
     justify-content: center;
     gap: 9%;
+    margin: 0 auto;
 }
 
 .info{
     font-size: 30px;
     margin-top: 8%;        
     line-height: 1.9;
+    padding-right: 8%;
 }
 
 .men-img img{
@@ -484,12 +493,22 @@ a{
     background-color: #555;
 }
 
+/* Container for cart and summary sections */
+.cart-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    gap: 60px; /* Added spacing between cart items and summary */
+}
+
+/* Cart Items Section */
 .cart-items {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 20px;
-    padding: 20px;
+    gap: 20px; /* Reduced gap for a cleaner look */
+    margin-top: 20px; /* Adjusted margin for consistent spacing */
+    padding-left: 60px; /* Reduced padding for alignment */
+    width: 45%;
 }
 
 .cart-item {
@@ -497,81 +516,80 @@ a{
     align-items: center;
     gap: 20px;
     border: 1px solid #ccc;
-    padding: 20px;
-    width: 80%;
-    max-width: 800px;
+    padding: 15px; /* Adjusted padding for a more compact look */
+    width: 100%; /* Full-width within the container */
     background-color: #f9f9f9;
+    border-radius: 8px; /* Added rounded corners for better aesthetics */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for separation */
+    position: relative; /* Ensure the bin icon is positioned correctly */
 }
 
 .cart-item-image {
-    width: 100px;
-    height: 100px;
-    object-fit: cover;
+    width: 120px; /* Adjusted for better proportions */
+    height: 190px; /* Added height to maintain aspect ratio */
+    object-fit: cover; /* Ensures the image fits nicely */
+    border-radius: 4px; /* Rounded image corners */
 }
 
 .cart-item-details {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 8px; /* Reduced gap for compact layout */
+    font-size: 18px; /* Standardized font size */
+    line-height: 1.5; /* Improved readability */
 }
 
-.remove-btn {
-    padding: 5px 10px;
-    border: none;
-    background-color: #ff4d4d;
-    color: white;
-    cursor: pointer;
-    transition: background-color 0.3s;
+/* Cart Summary Section */
+.cart-summary {
+    margin-top: 50px;
+    padding-right: 80px;
+    width: 30%;
 }
 
-.remove-btn:hover {
-    background-color: #ff1a1a;
+.cart-summary h2 {
+    margin-bottom: 30px;
+    font-size: 40px; /* Larger, bold header */
+    font-weight: bold;
 }
 
+.cart-summary p {
+    margin-bottom: 12px; /* Adjusted spacing */
+    font-size: 25px;
+    color: #333; /* Slightly darker text for contrast */
+}
+
+/* Checkout Button */
 .checkout-btn {
-    padding: 10px 20px;
+    padding: 12px 20px; /* Increased padding for larger button */
     border: none;
     background-color: #333;
     color: white;
     cursor: pointer;
-    transition: background-color 0.3s;
-    margin: 20px auto;
-    display: block;
+    border-radius: 4px;
+    width: 100%; /* Ensures full-width in summary box */
+    text-align: center;
+    font-size: 16px; /* Larger font size for emphasis */
+    font-weight: bold; /* Slightly bolder text */
 }
 
 .checkout-btn:hover {
     background-color: #555;
 }
 
-.favourite-items {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-    padding: 20px;
+.remove-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    color: black;
+    transition: color 0.3s;
 }
 
-.favourite-item {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    border: 1px solid #ccc;
-    padding: 20px;
-    width: 80%;
-    max-width: 800px;
-    background-color: #f9f9f9;
-}
-
-.favourite-item-image {
-    width: 100px;
-    height: 100px;
-    object-fit: cover;
-}
-
-.favourite-item-details {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+.remove-btn:hover {
+    color: black;
 }
 
 .payment-items {
@@ -591,12 +609,6 @@ a{
     width: 80%;
     max-width: 800px;
     background-color: #f9f9f9;
-}
-
-.payment-item-image {
-    width: 100px;
-    height: 100px;
-    object-fit: cover;
 }
 
 .payment-item-details {
