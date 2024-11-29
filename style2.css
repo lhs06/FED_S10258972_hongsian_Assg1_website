@@ -1,40 +1,111 @@
-.container {
-    display: flex;
-    width: 90%;
-    background-color: #fff;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin: 0 auto;
+body {
+    font-family: Arial, sans-serif;
 }
 
-.flex-item1 {
-    padding: 2%;
-    flex-grow: 1;
-    flex-basis: 15%;
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 30px;
+    background-color: #e2e3de;
+    position: relative;
+}
+
+.logo-link {
+    display: flex;
+    align-items: center;
+}
+
+.logo-img {
+    width: 40px; /* Adjust the size as needed */
+    height: auto;
+}
+
+.text-logo {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.logo-text {
+    font-size: 32px;
+    font-weight: bold;
+    color: #121212;
+    letter-spacing: 1px;
+    text-decoration: none;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+    margin-left: auto; /* Aligns the nav-links to the right */
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: black;
+    font-size: 19px;
+    font-weight: 500;
+    position: relative;
+}
+
+.icons {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.icon {
+    font-size: 25px;
+    color: black;
+    cursor: pointer;
+}
+
+.payment-form {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+.payment-form form {
     display: flex;
     flex-direction: column;
 }
 
-.flex-img1 {
-    width: 100%;
-    height: 80%;
-    overflow: hidden;
-    margin-bottom: 10px;
+.payment-form label {
+    font-weight: bold;
+    margin-bottom: 5px;
 }
 
-.flex-img1 img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+.payment-form input {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
 }
 
-.Mcontainer3{
-    display: flex;
-    width: 80%;
-    background-color: #fff;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin: 0 auto;
-    padding: 1%;
-    gap: 3%;
+.payment-form .total {
+    font-size: 18px;
+    font-weight: bold;
+    text-align: right;
+}
+
+.payment-form button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #333;
+    color: white;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.payment-form button:hover {
+    background-color: #555;
 }

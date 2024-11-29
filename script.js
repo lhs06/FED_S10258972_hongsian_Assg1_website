@@ -120,3 +120,43 @@ document.addEventListener('DOMContentLoaded', function() {
     updateSliderCard();
 });
 
+//payment//
+document.addEventListener('DOMContentLoaded', function() {
+    const paymentItems = JSON.parse(localStorage.getItem('cart')) || [];
+    const paymentDiv = document.getElementById('paymentItems');
+    const totalAmountSpan = document.getElementById('totalAmount');
+
+    function renderPaymentItems() {
+        paymentDiv.innerHTML = '';
+        let totalAmount = 0;
+        if (paymentItems.length === 0) {
+            paymentDiv.innerHTML = '<p>Your cart is empty.</p>';
+        } else {
+            paymentItems.forEach(item => {
+                const itemDiv = document.createElement('div');
+                itemDiv.classList.add('payment-item');
+                itemDiv.innerHTML = `
+                    <img src="${item.image}" alt="${item.name}" class="payment-item-image">
+                    <div class="payment-item-details">
+                        <h3>${item.name}</h3>
+                        <p>${item.description}</p>
+                        <p>Size: ${item.size}</p>
+                        <p>Price: $${item.price.toFixed(2)}</p>
+                    </div>
+                `;
+                paymentDiv.appendChild(itemDiv);
+                totalAmount += item.price;
+            });
+        }
+        totalAmountSpan.textContent = totalAmount.toFixed(2);
+    }
+
+    renderPaymentItems();
+
+    const paymentForm = document.getElementById('paymentForm');
+    paymentForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+        alert('Payment successful!');
+        // Add your payment processing logic here
+    });
+});
