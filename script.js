@@ -42,6 +42,13 @@ document.addEventListener('DOMContentLoaded', function() {
         slideContainer.innerHTML = `<a href="${images[index].link}"><img src="${images[index].src}" class="slide-img"></a>`;
     }
 
+    function showNextImage() {
+        currentIndex = (currentIndex + 1) % images.length;
+        showImage(currentIndex);
+    }
+
+    setInterval(showNextImage, 5000); // Change image every 5 seconds
+
     leftBtn.addEventListener('click', function() {
         currentIndex = (currentIndex - 1 + images.length) % images.length;
         showImage(currentIndex);
@@ -52,7 +59,7 @@ document.addEventListener('DOMContentLoaded', function() {
         showImage(currentIndex);
     });
 
-    showImage(currentIndex); 
+    showImage(currentIndex); // Show the first image initially
 });
 
 //card slider//
