@@ -326,30 +326,26 @@ ul li a:hover::before{
     width: 80%;
     padding: 10%;
     flex-wrap: wrap;
-    gap: 20px; /* Adjust the gap between items as needed */
+    gap: 8px; /* Adjust the gap between items as needed */
     justify-content: space-between; /* Ensure items are evenly spaced */
 }
 
 .Mcontainer2{
     display: flex;
     width: 80%;
-    background-color: #fff;
+    padding: 10%;
     flex-wrap: wrap;
-    justify-content: center;
-    margin: 0 auto;
-    padding: 1%;
-    gap: 3%;
+    gap: 8px; /* Adjust the gap between items as needed */
+    justify-content: space-between; /* Ensure items are evenly spaced */
 }
 
 .Mcontainer3{
     display: flex;
     width: 80%;
-    background-color: #fff;
+    padding: 10%;
     flex-wrap: wrap;
-    justify-content: center;
-    margin: 0 auto;
-    padding: 1%;
-    gap: 3%;
+    gap: 20px; /* Adjust the gap between items as needed */
+    justify-content: space-between; /* Ensure items are evenly spaced */
 }
 
 
