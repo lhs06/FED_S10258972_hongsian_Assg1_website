@@ -295,7 +295,6 @@ ul li a:hover::before{
     align-items: center;
     justify-content: center;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    z-index: 2;
 }
 
 .nav-button:hover {
@@ -411,13 +410,14 @@ ul li a:hover::before{
     font-size: 30px;
     margin-top: 8%;        
     line-height: 1.9;
-    padding-right: 8%;
+    padding-right: 12%;
 }
 
 .men-img img{
     height: 600px;
     margin-top: 20%;
     margin-bottom: 20%;
+    border-radius: 8px;
 }
 
 a{
@@ -688,6 +688,7 @@ a{
     padding: 2rem;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    font-size: 1.1rem;
 }
 
 .contact-info h2 {
@@ -729,6 +730,7 @@ a{
     top: 0;
     left: 0;
 }
+
 .social-media {
     margin-top: 2rem;
     display: flex;
@@ -751,6 +753,9 @@ a{
     transform: translateY(-2px);
     background-color: #0056b3;
 }
+
+
+
 
 @media (max-width: 768px) {
     /* General styles */
@@ -866,7 +871,7 @@ a{
     }
     
     .flex-item {
-        min-width: calc(70% - 13px);
+        min-width: calc(75% - 13px);
         background: white;
         border-radius: 8px;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -885,82 +890,7 @@ a{
         object-fit: cover;
         transition: transform 0.3s ease;
     }
-    
-    .flex-img img:hover {
-        transform: scale(1.05);
-    }
-    
-    .flex-info {
-        padding: 20px;
-        text-align: center;
-    }
-    
-    .flex-info h3 {
-        color: #333;
-        margin-bottom: 10px;
-        font-size: 1.2em;
-    }
-    
-    .flex-info p {
-        color: #666;
-        margin-bottom: 5px;
-    }
-    
-    .flex-info p:last-child {
-        color: #004D98;
-        font-weight: bold;
-    }
-    
-    .nav-button {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        background: rgba(255, 255, 255, 0.9);
-        border: none;
-        border-radius: 50%;
-        width: 40px;
-        height: 40px;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        z-index: 2;
-    }
-    
-    .nav-button:hover {
-        background: white;
-    }
-    
-    .prev {
-        left: 10px;
-    }
-    
-    .next {
-        right: 10px;
-    }
-    
-    .dots {
-        display: flex;
-        justify-content: center;
-        gap: 8px;
-        margin-top: 20px;
-    }
-    
-    .dot {
-        width: 8px;
-        height: 8px;
-        border-radius: 50%;
-        background: #ccc;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-    }
-    
-    .dot.active {
-        background: #004D98;
-    }
-    
-  
+
     .flex-item1 {
       flex: 0 0 100%;
     }
