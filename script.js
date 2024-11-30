@@ -1,169 +1,152 @@
-//dropdown menu//
-document.addEventListener('DOMContentLoaded', function() {
-    const dropdown = document.querySelector('.dropdown');
-    const dropdownContent = document.getElementById('dropdownContent');
-
-    dropdown.addEventListener('mouseenter', function() {
-        dropdownContent.classList.add('show');
-    });
-
-    dropdown.addEventListener('mouseleave', function() {
-        dropdownContent.classList.remove('show');
-    });
+// Wait for the DOM to fully load before running the scripts
+document.addEventListener('DOMContentLoaded', () => {
+    initializeDropdown(); // Initialize dropdown menu functionality
+    initializeImageSlider(); // Initialize image slider functionality
+    initializeCardSlider(); // Initialize card slider functionality
+    initializePayment(); // Initialize payment functionality
+    initializeCart(); // Initialize cart functionality
+    initializeSizeSelection(); // Initialize size selection functionality
+    initializeAddToCart(); // Initialize add to cart functionality
 });
 
+/** Initialize Dropdown Menu */
+function initializeDropdown() {
+    const dropdown = document.querySelector('.dropdown'); // Select the dropdown element
+    const dropdownContent = document.getElementById('dropdownContent'); // Select the dropdown content element
 
-//linking pages 1//
-document.addEventListener('DOMContentLoaded', function() {
-    const images = [
-        {
-            src: "http://barcauniversal.com/wp-content/uploads/2023/07/Barcelona-away-scaled.jpg",
-            link: "/Men.html"
-        },
-        {
-            src: "https://store.fcbarcelona.com/cdn/shop/collections/Cabecera-Banner_750x480_1_-kit_d.jpg?v=1726572697&width=1920",
-            link: "/Men.html"
-        },
-        {
-            src: "https://store.fcbarcelona.com/cdn/shop/collections/OK_DESKTOP.jpg?v=1725432998&width=1920",
-            link: "/Women.html"
-        },
-        {
-            src: "https://store.fcbarcelona.com/cdn/shop/collections/Cabecera-Landing-Away-Kit-2500x880px-d.jpg?v=1725432957&width=1920",
-            link: "/Kid.html"
-        }
-    ];
-    let currentIndex = 0;
-    const slideContainer = document.querySelector('.Himg');
-    const leftBtn = document.querySelector('.left-btn');
-    const rightBtn = document.querySelector('.right-btn');
-
-    function showImage(index) {
-        slideContainer.innerHTML = `<a href="${images[index].link}"><img src="${images[index].src}" class="slide-img"></a>`;
+    // Check if both dropdown and dropdownContent exist
+    if (dropdown && dropdownContent) {
+        // Show dropdown content on mouse enter
+        dropdown.addEventListener('mouseenter', () => dropdownContent.classList.add('show'));
+        // Hide dropdown content on mouse leave
+        dropdown.addEventListener('mouseleave', () => dropdownContent.classList.remove('show'));
     }
+}
 
-    function showNextImage() {
+/** Initialize Image Slider */
+function initializeImageSlider() {
+    const images = [
+        { src: "http://barcauniversal.com/wp-content/uploads/2023/07/Barcelona-away-scaled.jpg", link: "/Men.html" },
+        { src: "https://store.fcbarcelona.com/cdn/shop/collections/Cabecera-Banner_750x480_1_-kit_d.jpg?v=1726572697&width=1920", link: "/Men.html" },
+        { src: "https://store.fcbarcelona.com/cdn/shop/collections/OK_DESKTOP.jpg?v=1725432998&width=1920", link: "/Women.html" },
+        { src: "https://store.fcbarcelona.com/cdn/shop/collections/Cabecera-Landing-Away-Kit-2500x880px-d.jpg?v=1725432957&width=1920", link: "/Kid.html" }
+    ]; // Array of images and their links
+    let currentIndex = 0; // Current index of the image slider
+    const slideContainer = document.querySelector('.Himg'); // Select the slide container
+    const leftBtn = document.querySelector('.left-btn'); // Select the left button
+    const rightBtn = document.querySelector('.right-btn'); // Select the right button
+
+    // Check if slideContainer exists
+    if (!slideContainer) return;
+
+    // Function to show an image based on the index
+    const showImage = (index) => {
+        slideContainer.innerHTML = `<a href="${images[index].link}"><img src="${images[index].src}" class="slide-img" alt="Slide Image"></a>`;
+    };
+
+    // Function to cycle through images automatically
+    const cycleImage = () => {
         currentIndex = (currentIndex + 1) % images.length;
         showImage(currentIndex);
-    }
+    };
 
-    setInterval(showNextImage, 5000); // Change image every 5 seconds
-
-    leftBtn.addEventListener('click', function() {
+    // Event listener for left button click
+    leftBtn?.addEventListener('click', () => {
         currentIndex = (currentIndex - 1 + images.length) % images.length;
         showImage(currentIndex);
     });
 
-    rightBtn.addEventListener('click', function() {
-        currentIndex = (currentIndex + 1) % images.length;
-        showImage(currentIndex);
+    // Event listener for right button click
+    rightBtn?.addEventListener('click', cycleImage);
+
+    // Automatically cycle images every 5 seconds
+    setInterval(cycleImage, 5000);
+
+    // Show the first image initially
+    showImage(currentIndex);
+}
+
+/** Initialize Card Slider */
+function initializeCardSlider() {
+    const sliderContainer = document.querySelector('.slider-container'); // Select the slider container
+    const dots = document.querySelectorAll('.dot'); // Select all dots
+    const nextBtn = document.querySelector('.next'); // Select the next button
+    const prevBtn = document.querySelector('.prev'); // Select the previous button
+    const totalSlides = Math.ceil(document.querySelectorAll('.flex-item').length / 3); // Calculate total slides
+    let currentCardIndex = 0; // Current index of the card slider
+
+    // Check if sliderContainer exists
+    if (!sliderContainer) return;
+
+    // Function to update the slider position and active dot
+    const updateSlider = () => {
+        sliderContainer.style.transform = `translateX(${-currentCardIndex * 100}%)`;
+        dots.forEach((dot, i) => dot.classList.toggle('active', i === currentCardIndex));
+    };
+
+    // Event listener for next button click
+    nextBtn?.addEventListener('click', () => {
+        currentCardIndex = (currentCardIndex + 1) % totalSlides;
+        updateSlider();
     });
 
-    showImage(currentIndex); // Show the first image initially
-});
+    // Event listener for previous button click
+    prevBtn?.addEventListener('click', () => {
+        currentCardIndex = (currentCardIndex - 1 + totalSlides) % totalSlides;
+        updateSlider();
+    });
 
-//card slider//
-document.addEventListener('DOMContentLoaded', function() {
-    // Existing Slideshow Logic
-    
-    // Card Slider Logic
-    const sliderContainerCard = document.querySelector('.slider-container');
-    const prevButtonCard = document.querySelector('.prev');
-    const nextButtonCard = document.querySelector('.next');
-    const dots = document.querySelectorAll('.dot'); // Select dots
-    const totalItems = document.querySelectorAll('.flex-item').length;
-    const visibleItems = 3; // Number of items visible at once
-    const totalSlides = Math.ceil(totalItems / visibleItems);
-    let currentIndexCard = 0;
-
-    function updateSliderCard() {
-        const translateX = -(currentIndexCard * (100));
-        sliderContainerCard.style.transform = `translateX(${translateX}%)`;
-        
-        // Update dots
-        dots.forEach((dot, index) => {
-            dot.classList.toggle('active', index === currentIndexCard);
-        });
-    }
-
-    function nextSlideCard() {
-        if (currentIndexCard < totalSlides - 1) {
-            currentIndexCard++;
-        } else {
-            currentIndexCard = 0; // Loop back to the start
-        }
-        updateSliderCard();
-    }
-
-    function prevSlideCard() {
-        if (currentIndexCard > 0) {
-            currentIndexCard--;
-        } else {
-            currentIndexCard = totalSlides - 1; // Loop to the end
-        }
-        updateSliderCard();
-    }
-
-    // Function to handle dot clicks
-    dots.forEach((dot, index) => {
+    // Event listeners for dot clicks
+    dots.forEach((dot, i) => {
         dot.addEventListener('click', () => {
-            currentIndexCard = index;
-            updateSliderCard();
+            currentCardIndex = i;
+            updateSlider();
         });
     });
 
-    // Event listeners for card slider
-    nextButtonCard.addEventListener('click', nextSlideCard);
-    prevButtonCard.addEventListener('click', prevSlideCard);
+    // Initial update of the slider
+    updateSlider();
+}
 
-    // Initial position
-    updateSliderCard();
-});
+/** Initialize Payment Functionality */
+function initializePayment() {
+    const paymentForm = document.getElementById('paymentForm'); // Select the payment form
+    const totalAmountSpan = document.getElementById('totalAmount'); // Select the total amount span
+    const paymentItems = JSON.parse(localStorage.getItem('cart')) || []; // Get cart items from local storage
 
-//payment//
-document.addEventListener('DOMContentLoaded', function() {
-    const paymentItems = JSON.parse(localStorage.getItem('cart')) || [];
-    const totalAmountSpan = document.getElementById('totalAmount');
-
-    function calculateTotalAmount() {
-        let totalAmount = 0;
-        paymentItems.forEach(item => {
-            totalAmount += item.price;
-        });
-        totalAmountSpan.textContent = totalAmount.toFixed(2);
+    // Check if totalAmountSpan exists
+    if (totalAmountSpan) {
+        // Calculate and display the total amount
+        const total = paymentItems.reduce((sum, item) => sum + item.price, 0).toFixed(2);
+        totalAmountSpan.textContent = total;
     }
 
-    calculateTotalAmount();
-
-    const paymentForm = document.getElementById('paymentForm');
-    paymentForm.addEventListener('submit', function(event) {
-        event.preventDefault();
+    // Event listener for payment form submission
+    paymentForm?.addEventListener('submit', (e) => {
+        e.preventDefault();
         alert('Payment successful!');
-        // Clear the cart items from local storage
-        localStorage.removeItem('cart');
+        localStorage.removeItem('cart'); // Clear the cart items from local storage
     });
-});
+}
 
+/** Initialize Cart Functionality */
+function initializeCart() {
+    const cartDiv = document.getElementById('cartItems'); // Select the cart items container
+    const subtotalSpan = document.getElementById('subtotal'); // Select the subtotal span
+    const totalSpan = document.getElementById('total'); // Select the total span
+    const checkoutButton = document.getElementById('checkoutButton'); // Select the checkout button
+    const deliveryFee = 5.00; // Set the delivery fee
+    let cartItems = JSON.parse(localStorage.getItem('cart')) || []; // Get cart items from local storage
 
-//bin//
-document.addEventListener('DOMContentLoaded', function() {
-    const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
-    const cartDiv = document.getElementById('cartItems');
-    const subtotalSpan = document.getElementById('subtotal');
-    const deliveryFeeSpan = document.getElementById('deliveryFee');
-    const totalSpan = document.getElementById('total');
-    const deliveryFee = 5.00;
+    // Check if cartDiv, subtotalSpan, and totalSpan exist
+    if (!cartDiv || !subtotalSpan || !totalSpan) return;
 
-    function renderCartItems() {
-        cartDiv.innerHTML = '';
-        let subtotal = 0;
-        if (cartItems.length === 0) {
-            cartDiv.innerHTML = '<p>Your cart is empty.</p>';
-        } else {
-            cartItems.forEach((item, index) => {
-                const itemDiv = document.createElement('div');
-                itemDiv.classList.add('cart-item');
-                itemDiv.innerHTML = `
+    // Function to render cart items and update totals
+    const renderCart = () => {
+        cartDiv.innerHTML = cartItems.length === 0
+            ? '<p>Your cart is empty.</p>'
+            : cartItems.map((item, i) => `
+                <div class="cart-item">
                     <img src="${item.image}" alt="${item.name}" class="cart-item-image">
                     <div class="cart-item-details">
                         <h3>${item.name}</h3>
@@ -171,65 +154,63 @@ document.addEventListener('DOMContentLoaded', function() {
                         <p>Size: ${item.size}</p>
                         <p>Price: $${item.price.toFixed(2)}</p>
                     </div>
-                    <button class="remove-btn" data-index="${index}">&#128465;</button>
-                `;
-                cartDiv.appendChild(itemDiv);
-                subtotal += item.price;
-            });
-        }
+                    <button class="remove-btn" data-index="${i}">&#128465;</button>
+                </div>`).join('');
+
+        const subtotal = cartItems.reduce((sum, item) => sum + item.price, 0);
         subtotalSpan.textContent = subtotal.toFixed(2);
-        const total = subtotal + deliveryFee;
-        totalSpan.textContent = total.toFixed(2);
-    }
+        totalSpan.textContent = (subtotal + deliveryFee).toFixed(2);
+    };
 
-    renderCartItems();
+    // Initial render of the cart
+    renderCart();
 
-    cartDiv.addEventListener('click', function(event) {
-        if (event.target.classList.contains('remove-btn')) {
-            const index = event.target.dataset.index;
+    // Event listener for removing items from the cart
+    cartDiv.addEventListener('click', (e) => {
+        if (e.target.classList.contains('remove-btn')) {
+            const index = Number(e.target.dataset.index);
             cartItems.splice(index, 1);
             localStorage.setItem('cart', JSON.stringify(cartItems));
-            renderCartItems();
+            renderCart();
         }
     });
 
-    const checkoutButton = document.getElementById('checkoutButton');
-    checkoutButton.addEventListener('click', function() {
+    // Event listener for checkout button click
+    checkoutButton?.addEventListener('click', () => {
         if (cartItems.length > 0) {
             window.location.href = '/payment.html';
         } else {
             alert('Your cart is empty.');
         }
     });
-});
+}
 
-//cart//
-document.addEventListener('DOMContentLoaded', function() {
-    // Variables to store the selected size, cart, and favorite items
-    let selectedSize = null;
-    const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
-
-    // Handle size selection
-    const sizeButtons = document.querySelectorAll('.size-btn');
+/** Initialize Size Selection */
+function initializeSizeSelection() {
+    const sizeButtons = document.querySelectorAll('.size-btn'); // Select all size buttons
     sizeButtons.forEach((btn) => {
         btn.addEventListener('click', () => {
-            selectedSize = btn.getAttribute('data-size');
-            // Highlight selected size
+            const selectedSize = btn.getAttribute('data-size');
             sizeButtons.forEach(b => b.classList.remove('selected'));
             btn.classList.add('selected');
+            btn.dataset.selectedSize = selectedSize;
         });
     });
+}
 
-    // Handle adding to cart
-    const addToCartButtons = document.querySelectorAll('.addToCart');
+/** Initialize Add to Cart */
+function initializeAddToCart() {
+    const addToCartButtons = document.querySelectorAll('.addToCart'); // Select all add to cart buttons
     addToCartButtons.forEach((button) => {
         button.addEventListener('click', function() {
-            const productElement = button.closest('.Mproduct');
-            const productName = productElement.getAttribute('data-name');
-            const productDescription = productElement.getAttribute('data-description');
-            const productPrice = parseFloat(productElement.getAttribute('data-price'));
-            const productImage = productElement.getAttribute('data-image');
+            const productElement = button.closest('.Mproduct'); // Select the closest product element
+            const productName = productElement.getAttribute('data-name'); // Get the product name
+            const productDescription = productElement.getAttribute('data-description'); // Get the product description
+            const productPrice = parseFloat(productElement.getAttribute('data-price')); // Get the product price
+            const productImage = productElement.getAttribute('data-image'); // Get the product image
+            const selectedSize = productElement.querySelector('.size-btn.selected')?.dataset.selectedSize; // Get the selected size
 
+            // Check if a size is selected
             if (selectedSize) {
                 const newItem = {
                     name: productName,
@@ -238,68 +219,14 @@ document.addEventListener('DOMContentLoaded', function() {
                     price: productPrice,
                     image: productImage
                 };
+                let cartItems = JSON.parse(localStorage.getItem('cart')) || [];
                 cartItems.push(newItem);
                 localStorage.setItem('cart', JSON.stringify(cartItems));
                 alert('Item added to cart!');
-                renderCartItems(); // Update the cart items after adding a new item
+                initializeCart(); // Update the cart items after adding a new item
             } else {
                 alert('Please select a size.');
             }
         });
     });
-
-    // Render cart items and update summary
-    const cartDiv = document.getElementById('cartItems');
-    const subtotalSpan = document.getElementById('subtotal');
-    const deliveryFeeSpan = document.getElementById('deliveryFee');
-    const totalSpan = document.getElementById('total');
-    const deliveryFee = 5.00;
-
-    function renderCartItems() {
-        cartDiv.innerHTML = '';
-        let subtotal = 0;
-        if (cartItems.length === 0) {
-            cartDiv.innerHTML = '<p>Your cart is empty.</p>';
-        } else {
-            cartItems.forEach((item, index) => {
-                const itemDiv = document.createElement('div');
-                itemDiv.classList.add('cart-item');
-                itemDiv.innerHTML = `
-                    <img src="${item.image}" alt="${item.name}" class="cart-item-image">
-                    <div class="cart-item-details">
-                        <h3>${item.name}</h3>
-                        <p>${item.description}</p>
-                        <p>Size: ${item.size}</p>
-                        <p>Price: $${item.price.toFixed(2)}</p>
-                    </div>
-                    <button class="remove-btn" data-index="${index}">&#128465;</button>
-                `;
-                cartDiv.appendChild(itemDiv);
-                subtotal += item.price;
-            });
-        }
-        subtotalSpan.textContent = subtotal.toFixed(2);
-        const total = subtotal + deliveryFee;
-        totalSpan.textContent = total.toFixed(2);
-    }
-
-    renderCartItems();
-
-    cartDiv.addEventListener('click', function(event) {
-        if (event.target.classList.contains('remove-btn')) {
-            const index = event.target.dataset.index;
-            cartItems.splice(index, 1);
-            localStorage.setItem('cart', JSON.stringify(cartItems));
-            renderCartItems();
-        }
-    });
-
-    const checkoutButton = document.getElementById('checkoutButton');
-    checkoutButton.addEventListener('click', function() {
-        if (cartItems.length > 0) {
-            window.location.href = '/payment.html';
-        } else {
-            alert('Your cart is empty.');
-        }
-    });
-});
+}
