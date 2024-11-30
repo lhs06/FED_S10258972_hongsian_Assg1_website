@@ -180,10 +180,6 @@ ul li a:hover::before{
     padding-left: 30px;
 }
 
-.Wcontent{
-    background-image: 50%;
-}
-
 .Himg-container {
     position: relative;
     text-align: center;
@@ -239,7 +235,6 @@ ul li a:hover::before{
     min-width: calc(33.333% - 13px);
     background: white;
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     overflow: hidden;
 }
 
@@ -294,7 +289,6 @@ ul li a:hover::before{
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .nav-button:hover {
@@ -336,7 +330,7 @@ ul li a:hover::before{
     width: 80%;
     padding: 5%;
     flex-wrap: wrap;
-    gap: 8px; /* Adjust the gap between items as needed */
+    gap: 8px; 
     justify-content: space-between; /* Ensure items are evenly spaced */
     margin: 0 auto;
 }
@@ -346,8 +340,8 @@ ul li a:hover::before{
     width: 80%;
     padding: 3%;
     flex-wrap: wrap;
-    gap: 8px; /* Adjust the gap between items as needed */
-    justify-content: space-between; /* Ensure items are evenly spaced */
+    gap: 8px; 
+    justify-content: space-between; 
     margin: 0 auto;
 }
 
@@ -356,8 +350,8 @@ ul li a:hover::before{
     width: 80%;
     padding: 5%;
     flex-wrap: wrap;
-    gap: 8px; /* Adjust the gap between items as needed */
-    justify-content: space-between; /* Ensure items are evenly spaced */
+    gap: 8px; 
+    justify-content: space-between; 
     margin: 0 auto;
 }
 
@@ -372,7 +366,7 @@ ul li a:hover::before{
 
 .flex-img1 {
     width: 100%;
-    height: 80%; /* Set a fixed height for consistency */
+    height: 80%; 
     overflow: hidden;
     margin-bottom: 10px;
 }
@@ -392,6 +386,7 @@ ul li a:hover::before{
     display: block;
 }
 
+/* adding to cart */
 .Mproduct{
     display: flex;
     flex-wrap: wrap;
@@ -420,7 +415,7 @@ ul li a:hover::before{
     border-radius: 8px;
 }
 
-a{
+a{  /* Remove underline from links */
     text-decoration: none;
     color: black;
 }
@@ -479,7 +474,7 @@ a{
     border-radius: 8px;
 }
 
-.action-btn:hover {
+.action-btn:hover {     
     background-color: #555;
 }
 
@@ -496,7 +491,7 @@ a{
 .cart-items {
     display: flex;
     flex-direction: column;
-    gap: 20px; /* Reduced gap for a cleaner look */
+    gap: 20px; 
     margin-top: 20px; /* Adjusted margin for consistent spacing */
     padding-left: 60px; /* Reduced padding for alignment */
     width: 45%;
@@ -507,17 +502,16 @@ a{
     align-items: center;
     gap: 20px;
     border: 1px solid #ccc;
-    padding: 15px; /* Adjusted padding for a more compact look */
-    width: 100%; /* Full-width within the container */
+    padding: 15px; 
+    width: 100%; 
     background-color: #f9f9f9;
-    border-radius: 8px; /* Added rounded corners for better aesthetics */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for separation */
-    position: relative; /* Ensure the bin icon is positioned correctly */
+    border-radius: 8px; 
+    position: relative; 
 }
 
 .cart-item-image {
-    width: 120px; /* Adjusted for better proportions */
-    height: 190px; /* Added height to maintain aspect ratio */
+    width: 120px; 
+    height: 190px; 
     object-fit: cover; /* Ensures the image fits nicely */
     border-radius: 4px; /* Rounded image corners */
 }
@@ -526,7 +520,7 @@ a{
     display: flex;
     flex-direction: column;
     gap: 8px; /* Reduced gap for compact layout */
-    font-size: 18px; /* Standardized font size */
+    font-size: 18px; 
     line-height: 1.5; /* Improved readability */
 }
 
@@ -539,14 +533,14 @@ a{
 
 .cart-summary h2 {
     margin-bottom: 30px;
-    font-size: 40px; /* Larger, bold header */
+    font-size: 40px; 
     font-weight: bold;
 }
 
 .cart-summary p {
-    margin-bottom: 12px; /* Adjusted spacing */
+    margin-bottom: 12px; 
     font-size: 25px;
-    color: #333; /* Slightly darker text for contrast */
+    color: #333; 
 }
 
 /* Checkout Button */
@@ -557,10 +551,10 @@ a{
     color: white;
     cursor: pointer;
     border-radius: 4px;
-    width: 100%; /* Ensures full-width in summary box */
+    width: 100%; 
     text-align: center;
     font-size: 16px; /* Larger font size for emphasis */
-    font-weight: bold; /* Slightly bolder text */
+    font-weight: bold; 
 }
 
 .checkout-btn:hover {
@@ -663,6 +657,8 @@ a{
     background-color: #555;
 }
 
+
+/* Others page */  
 .contact {
     max-width: 1200px;
     margin: 2rem auto;
@@ -711,7 +707,7 @@ a{
 }
 
 
-/*others pages*/
+/*Others pages*/
 .map {
     width: 100%;
     height: 400px;
