@@ -26,11 +26,12 @@ function initializeDropdown() {
 /** Initialize Image Slider */
 function initializeImageSlider() {
     const images = [
-        { src: "http://barcauniversal.com/wp-content/uploads/2023/07/Barcelona-away-scaled.jpg", link: "/Men.html" },
-        { src: "https://store.fcbarcelona.com/cdn/shop/collections/Cabecera-Banner_750x480_1_-kit_d.jpg?v=1726572697&width=1920", link: "/Men.html" },
-        { src: "https://store.fcbarcelona.com/cdn/shop/collections/OK_DESKTOP.jpg?v=1725432998&width=1920", link: "/Women.html" },
-        { src: "https://store.fcbarcelona.com/cdn/shop/collections/Cabecera-Landing-Away-Kit-2500x880px-d.jpg?v=1725432957&width=1920", link: "/Kid.html" }
+        { src: "img/home/Barca 2324 away.jpg", link: "/Men.html" },
+        { src: "img/home/men kits.webp", link: "/Men.html" },
+        { src: "img/home/womenskits.webp", link: "/Women.html" },
+        { src: "img/home/kidskits.webp", link: "/Kid.html" }
     ]; // Array of images and their links
+
     let currentIndex = 0; // Current index of the image slider
     const slideContainer = document.querySelector('.Himg'); // Select the slide container
     const leftBtn = document.querySelector('.left-btn'); // Select the left button
