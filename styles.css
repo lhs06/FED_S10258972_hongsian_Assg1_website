@@ -103,8 +103,6 @@ ul li a:hover::before{
     position: absolute;
     background-color: white;
     min-width: 160px;
-    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-    z-index: 1;
 }
 
 .dropdown-content a {
@@ -324,7 +322,7 @@ ul li a:hover::before{
 }
 
 
-/* Product pages*/
+/* Product pages: kits and gifts*/
 .Mcontainer1{
     display: flex;
     width: 80%;
@@ -512,14 +510,14 @@ a{  /* Remove underline from links */
 .cart-item-image {
     width: 120px; 
     height: 190px; 
-    object-fit: cover; /* Ensures the image fits nicely */
+    object-fit: cover; 
     border-radius: 4px; /* Rounded image corners */
 }
 
 .cart-item-details {
     display: flex;
     flex-direction: column;
-    gap: 8px; /* Reduced gap for compact layout */
+    gap: 8px; 
     font-size: 18px; 
     line-height: 1.5; /* Improved readability */
 }
@@ -577,6 +575,7 @@ a{  /* Remove underline from links */
     color: black;
 }
 
+/*Payment page*/
 .payment-items {
     display: flex;
     flex-direction: column;
@@ -706,8 +705,6 @@ a{  /* Remove underline from links */
     width: 24px;
 }
 
-
-/*Others pages*/
 .map {
     width: 100%;
     height: 400px;
@@ -746,7 +743,6 @@ a{  /* Remove underline from links */
 }
 
 .social-icon:hover {
-    transform: translateY(-2px);
     background-color: #0056b3;
 }
 
