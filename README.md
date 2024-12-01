@@ -1,4 +1,4 @@
-# S10258972_hongsian_Assg1_website
+# FED_S10258972_hongsian_Assg1_website
 
 The website that I have created is a website that mainly focuses on selling football related stuff such as jerseys and gifts of a club, and the brand name is called FTB.
 
@@ -19,7 +19,7 @@ Theres also a problem where I could not fix in the media query, which was not be
 
 
 Credits:
-All text that were used from sources where from https://store.fcbarcelona.com/en-sg?country=SG
+All text that were used from source where from https://store.fcbarcelona.com/en-sg?country=SG
 
 Media:
 https://store.fcbarcelona.com/en-sg?country=SG    
