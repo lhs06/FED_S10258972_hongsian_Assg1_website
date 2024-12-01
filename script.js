@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initializeAddToCart(); // Initialize add to cart functionality
 });
 
-/** Initialize Dropdown Menu */
+/* Initialize Dropdown Menu */
 function initializeDropdown() {
     const dropdown = document.querySelector('.dropdown'); // Select the dropdown element
     const dropdownContent = document.getElementById('dropdownContent'); // Select the dropdown content element
@@ -67,7 +67,7 @@ function initializeImageSlider() {
     showImage(currentIndex);
 }
 
-/** Initialize Card Slider */
+/* Initialize Card Slider */
 function initializeCardSlider() {
     const sliderContainer = document.querySelector('.slider-container'); // Select the slider container
     const dots = document.querySelectorAll('.dot'); // Select all dots
@@ -109,7 +109,7 @@ function initializeCardSlider() {
     updateSlider();
 }
 
-/** Initialize Payment Functionality */
+/* Initialize Payment Functionality */
 function initializePayment() {
     const paymentForm = document.getElementById('paymentForm'); // Select the payment form
     const totalAmountSpan = document.getElementById('totalAmount'); // Select the total amount span
@@ -130,7 +130,7 @@ function initializePayment() {
     });
 }
 
-/** Initialize Cart Functionality */
+/* Initialize Cart Functionality */
 function initializeCart() {
     const cartDiv = document.getElementById('cartItems'); // Select the cart items container
     const subtotalSpan = document.getElementById('subtotal'); // Select the subtotal span
@@ -186,7 +186,7 @@ function initializeCart() {
     });
 }
 
-/** Initialize Size Selection */
+/* Initialize Size Selection */
 function initializeSizeSelection() {
     const sizeButtons = document.querySelectorAll('.size-btn'); // Select all size buttons
     sizeButtons.forEach((btn) => {
@@ -199,7 +199,7 @@ function initializeSizeSelection() {
     });
 }
 
-/** Initialize Add to Cart */
+/* Initialize Add to Cart */
 function initializeAddToCart() {
     const addToCartButtons = document.querySelectorAll('.addToCart'); // Select all add to cart buttons
     addToCartButtons.forEach((button) => {

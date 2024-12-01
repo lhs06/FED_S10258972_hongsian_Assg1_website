@@ -621,7 +621,6 @@ a{  /* Remove underline from links */
     padding: 2rem;
     background-color: #f9f9f9;
     border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
 .payment-form label {
@@ -710,7 +709,6 @@ a{  /* Remove underline from links */
     height: 400px;
     border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
     background-color: #e9ecef;
     position: relative; /* Ensure positioning context for the image */
 }
@@ -750,7 +748,7 @@ a{  /* Remove underline from links */
 
 
 
-@media (max-width: 768px) {
+@media (max-width: 600px) {
     /* General styles */
     *{
         margin: 0;
@@ -779,8 +777,22 @@ a{  /* Remove underline from links */
     }
   
     .nav-links {
-      flex-direction: column;
+      flex-direction: row;
       gap: 15px;
+    }
+    
+    .dropdown-content {
+        position: absolute;
+        background-color: white;
+        min-width: 100px;
+    }
+    
+    .dropdown-content a {
+        color: black;
+        padding: 6px 16px;
+        text-decoration: none;
+        display: block;
+        font-size: 17px;
     }
   
     .icons {
