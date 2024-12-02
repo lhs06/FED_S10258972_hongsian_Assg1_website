@@ -26,10 +26,10 @@ function initializeDropdown() {
 /** Initialize Image Slider */
 function initializeImageSlider() {
     const images = [
-        { src: "img/home/Barca 2324 away.jpg", link: "/men.html" },
-        { src: "img/home/men kits.webp", link: "/men.html" },
-        { src: "img/home/womenskits.webp", link: "/women.html" },
-        { src: "img/home/kidskits.webp", link: "/kid.html" }
+        { src: "img/home/Barca 2324 away.jpg", link: "./men.html" },
+        { src: "img/home/men kits.webp", link: "./men.html" },
+        { src: "img/home/womenskits.webp", link: "./women.html" },
+        { src: "img/home/kidskits.webp", link: "./kid.html" }
     ]; // Array of images and their links
 
     let currentIndex = 0; // Current index of the image slider
@@ -179,7 +179,7 @@ function initializeCart() {
     // Event listener for checkout button click
     checkoutButton?.addEventListener('click', () => {
         if (cartItems.length > 0) {
-            window.location.href = '/payment.html';
+            window.location.href = './payment.html';
         } else {
             alert('Your cart is empty.');
         }
